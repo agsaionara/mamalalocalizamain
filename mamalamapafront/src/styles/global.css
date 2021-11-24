@@ -1,0 +1,12 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Nunito, sans-serif;
+}
+
+body{
+    color: #1D1F1F;
+    background: #A6D2E9;
+
+}
