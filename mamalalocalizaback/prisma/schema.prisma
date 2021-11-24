@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model BancoLeite{
+  id        Int    @id @default(autoincrement())
+  nome      String @db.VarChar(255)
+  latitude  Float
+  longitude Float
+  estoque   Boolean @default(true)
+
+  images    Image[]
+  @@map("bancoleites")
+
+}
+
+model Image{
+  id              Int    @id @default(autoincrement())
+  nome            String @db.VarChar(255)
+
+  bancoleite      BancoLeite @relation(fields: [bancoleiteid], references:[id], onUpdate: Cascade, onDelete: Cascade)
+  bancoleiteid    Int
+
+  @@map("images")
+
+}
+
